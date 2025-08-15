@@ -76,56 +76,120 @@ export default function DevelopmentSection() {
   };
 
   return (
-    <section id="development" ref={ref} className="relative py-24 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 overflow-hidden">
-      {/* Background Elements */}
+    <section id="development" ref={ref} className="relative py-24 bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 overflow-hidden">
+      {/* Enhanced Background Elements */}
       <div className="absolute inset-0">
+        {/* Primary glowing orbs */}
         <motion.div
           animate={{
-            scale: [1, 1.1, 1],
-            rotate: [0, 90, 180],
+            scale: [1, 1.5, 1],
+            rotate: [0, 270, 360],
+            x: [0, 50, 0],
+            y: [0, -40, 0],
           }}
           transition={{
-            duration: 30,
+            duration: 35,
             repeat: Infinity,
             ease: "linear"
           }}
-          className="absolute top-1/4 left-0 w-96 h-96 bg-gradient-to-r from-purple-500/10 to-blue-500/10 rounded-full blur-3xl"
+          className="absolute top-1/4 left-0 w-96 h-96 bg-gradient-to-r from-purple-500/30 to-blue-500/30 rounded-full blur-3xl"
+          style={{
+            filter: "blur(60px)",
+            boxShadow: "0 0 300px rgba(139, 92, 246, 0.4), 0 0 600px rgba(59, 130, 246, 0.2)"
+          }}
         />
         <motion.div
           animate={{
-            scale: [1.1, 1, 1.1],
-            rotate: [180, 90, 0],
+            scale: [1.3, 1, 1.3],
+            rotate: [360, 180, 0],
+            x: [0, -45, 0],
+            y: [0, 45, 0],
           }}
           transition={{
-            duration: 25,
+            duration: 40,
             repeat: Infinity,
             ease: "linear"
           }}
-          className="absolute bottom-0 right-1/4 w-80 h-80 bg-gradient-to-r from-blue-500/10 to-indigo-500/10 rounded-full blur-3xl"
+          className="absolute bottom-0 right-1/4 w-80 h-80 bg-gradient-to-r from-blue-500/30 to-indigo-500/30 rounded-full blur-3xl"
+          style={{
+            filter: "blur(60px)",
+            boxShadow: "0 0 280px rgba(59, 130, 246, 0.4), 0 0 560px rgba(99, 102, 241, 0.2)"
+          }}
+        />
+        
+        {/* Additional atmospheric elements */}
+        <motion.div
+          animate={{
+            x: [0, 120, -60, 0],
+            y: [0, -80, 40, 0],
+            scale: [0.7, 1.4, 0.8, 0.7],
+            opacity: [0.2, 0.8, 0.3, 0.2],
+          }}
+          transition={{
+            duration: 28,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          className="absolute top-1/2 right-1/4 w-72 h-72 bg-gradient-to-r from-teal-500/20 to-cyan-500/20 rounded-full blur-3xl"
+        />
+        <motion.div
+          animate={{
+            x: [0, -90, 60, 0],
+            y: [0, 60, -40, 0],
+            scale: [1.1, 0.7, 1.3, 1.1],
+            opacity: [0.3, 0.9, 0.2, 0.3],
+          }}
+          transition={{
+            duration: 32,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          className="absolute bottom-1/4 left-1/3 w-56 h-56 bg-gradient-to-r from-emerald-500/20 to-green-500/20 rounded-full blur-3xl"
         />
       </div>
+
+      {/* Animated tech pattern */}
+      <motion.div
+        animate={{
+          opacity: [0.03, 0.15, 0.03],
+          rotate: [0, 2, 0],
+        }}
+        transition={{
+          duration: 15,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+        className="absolute inset-0"
+        style={{
+          backgroundImage: `
+            linear-gradient(30deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px),
+            linear-gradient(120deg, rgba(139, 92, 246, 0.1) 1px, transparent 1px),
+            linear-gradient(60deg, rgba(99, 102, 241, 0.05) 1px, transparent 1px)
+          `,
+          backgroundSize: "80px 80px, 60px 60px, 40px 40px"
+        }}
+      />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
-          initial={{ y: 30, opacity: 0 }}
           animate={isInView ? { y: 0, opacity: 1 } : {}}
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
           <motion.h2
-            initial={{ y: 20, opacity: 0 }}
+            initial={{ y: 30, opacity: 0 }}
             animate={isInView ? { y: 0, opacity: 1 } : {}}
-            transition={{ delay: 0.2, duration: 0.8 }}
-            className="text-4xl md:text-5xl font-bold text-white mb-6"
+            transition={{ duration: 0.8 }}
+            className="text-4xl md:text-6xl font-bold text-center mb-6 bg-gradient-to-r from-purple-300 to-blue-300 bg-clip-text text-transparent"
           >
-            Razvoj & <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">Tehnologije</span>
+            Razvoj Softvera
           </motion.h2>
           <motion.p
             initial={{ y: 20, opacity: 0 }}
             animate={isInView ? { y: 0, opacity: 1 } : {}}
-            transition={{ delay: 0.4, duration: 0.8 }}
-            className="text-xl text-gray-300 max-w-3xl mx-auto"
+            transition={{ delay: 0.2, duration: 0.8 }}
+            className="text-xl text-gray-200 max-w-3xl mx-auto text-center mb-16"
           >
             Koristimo najnovije tehnologije i najbolje prakse za stvaranje 
             inovativnih rješenja koja pokreću vaše poslovanje u digitalnu budućnost

@@ -73,17 +73,53 @@ export default function FloatingNavbar() {
                 window.open('mailto:info@syncsolution.hr?subject=Upit za novi projekt', '_blank');
               }}
               whileHover={{ 
-                scale: 1.05,
-                boxShadow: "0 20px 40px rgba(139, 92, 246, 0.4)"
+                scale: 1.08,
+                y: -3,
+                boxShadow: "0 25px 50px rgba(139, 92, 246, 0.5), 0 0 80px rgba(139, 92, 246, 0.3)"
               }}
               whileTap={{ scale: 0.95 }}
-              className="group relative bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 py-3 rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden"
+              className="group relative bg-gradient-to-r from-purple-600 via-violet-600 to-blue-600 text-white px-8 py-3 rounded-2xl font-bold shadow-2xl transition-all duration-500 overflow-hidden"
+              style={{
+                boxShadow: "0 15px 35px rgba(139, 92, 246, 0.4), 0 0 60px rgba(139, 92, 246, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2)"
+              }}
             >
               <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-purple-500 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                className="absolute inset-0 bg-gradient-to-r from-purple-500 via-violet-500 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                 initial={false}
               />
-              <span className="relative z-10">Započni projekt</span>
+              <motion.div
+                className="absolute inset-0 rounded-2xl"
+                animate={{
+                  background: [
+                    "linear-gradient(45deg, transparent, rgba(255,255,255,0.15), transparent)",
+                    "linear-gradient(225deg, transparent, rgba(255,255,255,0.15), transparent)",
+                    "linear-gradient(45deg, transparent, rgba(255,255,255,0.15), transparent)"
+                  ]
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "linear"
+                }}
+                style={{
+                  backgroundSize: "200% 200%"
+                }}
+              />
+              <span className="relative z-10 flex items-center gap-2">
+                <motion.span
+                  animate={{ rotate: [0, 360] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+                >
+                  ✨
+                </motion.span>
+                Započni projekt
+                <motion.span
+                  animate={{ x: [0, 5, 0] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                >
+                  →
+                </motion.span>
+              </span>
             </motion.button>
           </div>
         </motion.div>
@@ -98,11 +134,16 @@ export default function FloatingNavbar() {
           initial={{ y: -100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className={`px-6 py-4 rounded-2xl backdrop-blur-xl border transition-all duration-500 ${
+          className={`backdrop-blur-xl border transition-all duration-500 ${
             isScrolled 
-              ? 'bg-white/95 border-purple-200/50 shadow-2xl shadow-purple-500/25' 
-              : 'bg-white/80 border-white/40 shadow-xl shadow-purple-500/10'
-          }`}
+              ? 'bg-white/95 border-white/40' 
+              : 'bg-white/80 border-white/30'
+          } rounded-3xl px-6 py-4 overflow-hidden`}
+          style={{
+            boxShadow: isScrolled 
+              ? "0 25px 50px rgba(0, 0, 0, 0.15), 0 0 60px rgba(139, 92, 246, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.3)"
+              : "0 15px 35px rgba(0, 0, 0, 0.1), 0 0 40px rgba(139, 92, 246, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.2)"
+          }}
         >
           <div className="flex items-center justify-between">
             <motion.div

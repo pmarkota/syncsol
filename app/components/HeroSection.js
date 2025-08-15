@@ -16,69 +16,135 @@ export default function HeroSection() {
 
   return (
     <section ref={ref} id="home" className="relative h-screen flex items-center justify-center overflow-hidden">
-      {/* Enhanced Gradient Background */}
+      {/* Multi-layered Gradient Background */}
       <motion.div 
         style={{ y, opacity }}
-        className="absolute inset-0 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900"
+        className="absolute inset-0 bg-gradient-to-br from-slate-900 via-purple-900 to-blue-900"
       />
       
-      {/* Layered Background Effects */}
+      {/* Animated mesh gradient overlay */}
+      <motion.div
+        animate={{
+          background: [
+            "radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.3) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%), radial-gradient(circle at 40% 80%, rgba(120, 219, 255, 0.3) 0%, transparent 50%)",
+            "radial-gradient(circle at 60% 20%, rgba(120, 119, 198, 0.3) 0%, transparent 50%), radial-gradient(circle at 20% 80%, rgba(255, 119, 198, 0.3) 0%, transparent 50%), radial-gradient(circle at 80% 50%, rgba(120, 219, 255, 0.3) 0%, transparent 50%)",
+            "radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.3) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%), radial-gradient(circle at 40% 80%, rgba(120, 219, 255, 0.3) 0%, transparent 50%)"
+          ]
+        }}
+        transition={{
+          duration: 10,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+        className="absolute inset-0"
+      />
+      
+      {/* Enhanced floating orbs with glow effects */}
       <div className="absolute inset-0">
-        {/* Primary floating orbs */}
+        {/* Primary glowing orbs */}
         <motion.div
           animate={{
             scale: [1, 1.3, 1],
-            rotate: [0, 120, 240, 360],
-            x: [0, 50, -30, 0],
-            y: [0, -30, 20, 0],
+            rotate: [0, 180, 360],
+            x: [0, 50, 0],
+            y: [0, -30, 0],
           }}
           transition={{
-            duration: 30,
+            duration: 20,
             repeat: Infinity,
-            ease: "easeInOut"
+            ease: "linear"
           }}
-          className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-purple-500/15 to-blue-500/15 rounded-full blur-3xl"
+          className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-purple-500/30 to-blue-500/30 rounded-full blur-3xl"
+          style={{
+            filter: "blur(40px)",
+            boxShadow: "0 0 200px rgba(139, 92, 246, 0.4), 0 0 400px rgba(59, 130, 246, 0.2)"
+          }}
         />
         <motion.div
           animate={{
-            scale: [1.2, 0.8, 1.2],
-            rotate: [360, 240, 120, 0],
-            x: [0, -40, 30, 0],
-            y: [0, 40, -20, 0],
+            scale: [1.2, 1, 1.2],
+            rotate: [360, 180, 0],
+            x: [0, -40, 0],
+            y: [0, 40, 0],
           }}
           transition={{
-            duration: 35,
+            duration: 25,
             repeat: Infinity,
-            ease: "easeInOut"
+            ease: "linear"
           }}
-          className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-blue-500/15 to-indigo-500/15 rounded-full blur-3xl"
+          className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-blue-500/30 to-indigo-500/30 rounded-full blur-3xl"
+          style={{
+            filter: "blur(40px)",
+            boxShadow: "0 0 180px rgba(59, 130, 246, 0.4), 0 0 360px rgba(99, 102, 241, 0.2)"
+          }}
         />
         
-        {/* Secondary ambient lights */}
+        {/* Secondary ambient orbs with enhanced glow */}
         <motion.div
           animate={{
-            opacity: [0.3, 0.8, 0.3],
-            scale: [1, 1.1, 1],
+            x: [0, 120, 0],
+            y: [0, -70, 0],
+            scale: [1, 1.2, 1],
+            rotate: [0, 90, 180],
           }}
           transition={{
-            duration: 8,
+            duration: 15,
             repeat: Infinity,
             ease: "easeInOut"
           }}
-          className="absolute top-1/2 left-1/6 w-64 h-64 bg-gradient-to-r from-purple-400/10 to-pink-400/10 rounded-full blur-2xl"
+          className="absolute top-1/2 left-1/2 w-72 h-72 bg-gradient-to-r from-pink-500/25 to-purple-500/25 rounded-full blur-3xl"
+          style={{
+            filter: "blur(35px)",
+            boxShadow: "0 0 150px rgba(236, 72, 153, 0.3), 0 0 300px rgba(139, 92, 246, 0.15)"
+          }}
         />
         <motion.div
           animate={{
-            opacity: [0.4, 0.7, 0.4],
-            scale: [1, 1.2, 1],
+            x: [0, -100, 0],
+            y: [0, 80, 0],
+            scale: [1.1, 1, 1.1],
+            rotate: [180, 270, 360],
+          }}
+          transition={{
+            duration: 18,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          className="absolute top-3/4 left-1/3 w-56 h-56 bg-gradient-to-r from-cyan-500/25 to-blue-500/25 rounded-full blur-3xl"
+          style={{
+            filter: "blur(35px)",
+            boxShadow: "0 0 140px rgba(6, 182, 212, 0.3), 0 0 280px rgba(59, 130, 246, 0.15)"
+          }}
+        />
+        
+        {/* Additional micro orbs for depth */}
+        <motion.div
+          animate={{
+            x: [0, 60, -30, 0],
+            y: [0, -40, 20, 0],
+            scale: [0.8, 1.1, 0.9, 0.8],
+            opacity: [0.3, 0.6, 0.4, 0.3],
           }}
           transition={{
             duration: 12,
             repeat: Infinity,
-            ease: "easeInOut",
-            delay: 2
+            ease: "easeInOut"
           }}
-          className="absolute bottom-1/3 left-2/3 w-48 h-48 bg-gradient-to-r from-blue-400/10 to-cyan-400/10 rounded-full blur-2xl"
+          className="absolute top-1/3 right-1/3 w-32 h-32 bg-gradient-to-r from-violet-500/20 to-fuchsia-500/20 rounded-full blur-2xl"
+        />
+        <motion.div
+          animate={{
+            x: [0, -50, 40, 0],
+            y: [0, 30, -20, 0],
+            scale: [0.9, 1.2, 0.8, 0.9],
+            opacity: [0.4, 0.7, 0.3, 0.4],
+          }}
+          transition={{
+            duration: 14,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          className="absolute bottom-1/3 left-1/5 w-40 h-40 bg-gradient-to-r from-emerald-500/20 to-teal-500/20 rounded-full blur-2xl"
         />
       </div>
 
@@ -212,7 +278,7 @@ export default function HeroSection() {
           razvoj naprednih softverskih rješenja koja transformiraju način rada vaše organizacije
         </motion.p>
 
-        {/* Enhanced CTA Buttons */}
+        {/* Enhanced CTA Buttons with Glow Effects */}
         <motion.div
           initial={{ y: 40, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -224,19 +290,38 @@ export default function HeroSection() {
               document.querySelector('#automation')?.scrollIntoView({ behavior: 'smooth' });
             }}
             whileHover={{ 
-              scale: 1.05,
-              boxShadow: "0 25px 50px rgba(139, 92, 246, 0.5)",
-              y: -5
+              scale: 1.08,
+              y: -8
             }}
             whileTap={{ scale: 0.95 }}
-            className="group relative bg-gradient-to-r from-purple-600 via-purple-700 to-blue-600 text-white px-10 py-5 rounded-full text-lg font-semibold shadow-2xl hover:shadow-purple-500/60 transition-all duration-500 overflow-hidden"
+            className="group relative bg-gradient-to-r from-purple-600 via-violet-600 to-blue-600 text-white px-10 py-5 rounded-2xl font-bold text-lg shadow-2xl transition-all duration-500 overflow-hidden"
+            style={{
+              boxShadow: "0 20px 40px rgba(139, 92, 246, 0.4), 0 0 60px rgba(139, 92, 246, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2)"
+            }}
           >
             <motion.div
-              className="absolute inset-0 bg-gradient-to-r from-purple-500 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+              className="absolute inset-0 bg-gradient-to-r from-purple-500 via-violet-500 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
               initial={false}
             />
+            <motion.div
+              className="absolute inset-0 rounded-2xl"
+              animate={{
+                background: [
+                  "linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent)",
+                  "linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent)"
+                ]
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                ease: "linear"
+              }}
+              style={{
+                backgroundSize: "200% 200%"
+              }}
+            />
             <span className="relative z-10 flex items-center gap-2">
-              Započni automatizaciju
+              Saznaj više
               <motion.span
                 animate={{ x: [0, 5, 0] }}
                 transition={{ duration: 1.5, repeat: Infinity }}
@@ -248,25 +333,35 @@ export default function HeroSection() {
           
           <motion.button
             onClick={() => {
-              document.querySelector('#services')?.scrollIntoView({ behavior: 'smooth' });
+              document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
             }}
             whileHover={{ 
-              scale: 1.05,
-              backgroundColor: "rgba(255, 255, 255, 0.15)",
-              y: -5
+              scale: 1.08,
+              y: -8
             }}
             whileTap={{ scale: 0.95 }}
-            className="group border-2 border-white/40 text-white px-10 py-5 rounded-full text-lg font-semibold backdrop-blur-sm hover:border-white/60 transition-all duration-500 relative overflow-hidden"
+            className="group relative bg-white/5 backdrop-blur-xl text-white px-10 py-5 rounded-2xl font-bold text-lg border-2 border-white/20 transition-all duration-500 overflow-hidden"
+            style={{
+              boxShadow: "0 20px 40px rgba(255, 255, 255, 0.1), 0 0 60px rgba(255, 255, 255, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.2)"
+            }}
           >
             <motion.div
-              className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+              className="absolute inset-0 bg-gradient-to-r from-white/10 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
               initial={false}
             />
-            <span className="relative z-10">Pogledaj naše usluge</span>
+            <span className="relative z-10 flex items-center gap-2">
+              Kontakt
+              <motion.span
+                animate={{ rotate: [0, 15, 0] }}
+                transition={{ duration: 2, repeat: Infinity }}
+              >
+                ✉
+              </motion.span>
+            </span>
           </motion.button>
         </motion.div>
 
-        {/* Enhanced Scroll Indicator */}
+        {/* Scroll Indicator */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

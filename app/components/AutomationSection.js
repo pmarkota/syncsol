@@ -98,36 +98,98 @@ export default function AutomationSection() {
   };
 
   return (
-    <section id="automation" ref={ref} className="relative py-32 bg-gradient-to-br from-slate-50 via-white to-gray-50 overflow-hidden">
+    <section id="automation" ref={ref} className="relative py-24 bg-gradient-to-br from-slate-900 via-indigo-900 to-purple-900 overflow-hidden">
       {/* Enhanced Background Elements */}
       <div className="absolute inset-0">
+        {/* Primary animated orbs with enhanced glow */}
         <motion.div
           animate={{
-            x: [0, 100, 0],
-            y: [0, -50, 0],
+            scale: [1, 1.4, 1],
             rotate: [0, 180, 360],
+            x: [0, 40, 0],
+            y: [0, -25, 0],
           }}
           transition={{
-            duration: 40,
+            duration: 28,
             repeat: Infinity,
             ease: "linear"
           }}
-          className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-r from-purple-200/20 to-blue-200/20 rounded-full blur-3xl"
+          className="absolute top-1/4 left-0 w-96 h-96 bg-gradient-to-r from-purple-500/25 to-blue-500/25 rounded-full blur-3xl"
+          style={{
+            filter: "blur(50px)",
+            boxShadow: "0 0 250px rgba(139, 92, 246, 0.4), 0 0 500px rgba(59, 130, 246, 0.2)"
+          }}
         />
         <motion.div
           animate={{
-            x: [0, -80, 0],
-            y: [0, 60, 0],
+            scale: [1.2, 1, 1.2],
             rotate: [360, 180, 0],
+            x: [0, -35, 0],
+            y: [0, 35, 0],
           }}
           transition={{
-            duration: 35,
+            duration: 32,
             repeat: Infinity,
             ease: "linear"
           }}
-          className="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-r from-emerald-200/20 to-teal-200/20 rounded-full blur-3xl"
+          className="absolute bottom-0 right-1/4 w-80 h-80 bg-gradient-to-r from-blue-500/25 to-indigo-500/25 rounded-full blur-3xl"
+          style={{
+            filter: "blur(50px)",
+            boxShadow: "0 0 220px rgba(59, 130, 246, 0.4), 0 0 440px rgba(99, 102, 241, 0.2)"
+          }}
+        />
+        
+        {/* Additional floating elements for depth */}
+        <motion.div
+          animate={{
+            x: [0, 100, -50, 0],
+            y: [0, -60, 30, 0],
+            scale: [0.8, 1.3, 0.9, 0.8],
+            opacity: [0.3, 0.7, 0.4, 0.3],
+          }}
+          transition={{
+            duration: 22,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          className="absolute top-1/2 right-1/3 w-64 h-64 bg-gradient-to-r from-cyan-500/20 to-teal-500/20 rounded-full blur-3xl"
+        />
+        <motion.div
+          animate={{
+            x: [0, -80, 40, 0],
+            y: [0, 50, -30, 0],
+            scale: [1, 0.8, 1.2, 1],
+            opacity: [0.4, 0.8, 0.3, 0.4],
+          }}
+          transition={{
+            duration: 26,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          className="absolute bottom-1/3 left-1/4 w-48 h-48 bg-gradient-to-r from-violet-500/20 to-fuchsia-500/20 rounded-full blur-3xl"
         />
       </div>
+
+      {/* Dynamic grid pattern */}
+      <motion.div
+        animate={{
+          opacity: [0.05, 0.2, 0.05],
+          scale: [1, 1.02, 1],
+        }}
+        transition={{
+          duration: 12,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+        className="absolute inset-0"
+        style={{
+          backgroundImage: `
+            radial-gradient(circle at 25% 25%, rgba(139, 92, 246, 0.1) 1px, transparent 1px),
+            radial-gradient(circle at 75% 75%, rgba(59, 130, 246, 0.1) 1px, transparent 1px)
+          `,
+          backgroundSize: "60px 60px"
+        }}
+      />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Enhanced Section Header */}
@@ -151,21 +213,24 @@ export default function AutomationSection() {
           <motion.h2
             initial={{ y: 30, opacity: 0 }}
             animate={isInView ? { y: 0, opacity: 1 } : {}}
-            transition={{ delay: 0.4, duration: 0.8 }}
-            className="text-4xl md:text-6xl font-bold text-gray-900 mb-8 leading-tight"
+            transition={{ duration: 0.8 }}
+            className="text-4xl md:text-6xl font-bold text-center mb-6 bg-gradient-to-r from-purple-300 to-blue-300 bg-clip-text text-transparent"
           >
-            <span className="bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
-              Automatizacija
-            </span>
-            <br />
-            Poslovnih Procesa
+            Automatizacija
           </motion.h2>
-          
-          <motion.p
-            initial={{ y: 30, opacity: 0 }}
+          <motion.h3
+            initial={{ y: 20, opacity: 0 }}
             animate={isInView ? { y: 0, opacity: 1 } : {}}
-            transition={{ delay: 0.6, duration: 0.8 }}
-            className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed"
+            transition={{ delay: 0.2, duration: 0.8 }}
+            className="text-2xl md:text-3xl font-semibold text-center mb-8 text-white"
+          >
+            Poslovnih Procesa
+          </motion.h3>
+          <motion.p
+            initial={{ y: 20, opacity: 0 }}
+            animate={isInView ? { y: 0, opacity: 1 } : {}}
+            transition={{ delay: 0.4, duration: 0.8 }}
+            className="text-xl text-gray-200 max-w-4xl mx-auto text-center leading-relaxed"
           >
             Transformiramo vaše poslovne procese kroz naprednu automatizaciju koja štedi vrijeme, 
             smanjuje greške i povećava efikasnost. Evo naših ključnih rješenja:
@@ -296,13 +361,52 @@ export default function AutomationSection() {
                   document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
                 }}
                 whileHover={{ 
-                  scale: 1.05,
-                  boxShadow: "0 25px 50px rgba(139, 92, 246, 0.4)"
+                  scale: 1.08,
+                  y: -8
                 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-8 py-4 rounded-2xl font-semibold shadow-xl hover:shadow-purple-500/40 transition-all duration-300"
+                className="group relative bg-gradient-to-r from-purple-600 via-violet-600 to-blue-600 text-white px-12 py-6 rounded-2xl font-bold text-xl shadow-2xl transition-all duration-500 overflow-hidden"
+                style={{
+                  boxShadow: "0 25px 50px rgba(139, 92, 246, 0.5), 0 0 80px rgba(139, 92, 246, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2)"
+                }}
               >
-                Započni automatizaciju
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-r from-purple-500 via-violet-500 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  initial={false}
+                />
+                <motion.div
+                  className="absolute inset-0 rounded-2xl"
+                  animate={{
+                    background: [
+                      "linear-gradient(45deg, transparent, rgba(255,255,255,0.15), transparent)",
+                      "linear-gradient(225deg, transparent, rgba(255,255,255,0.15), transparent)",
+                      "linear-gradient(45deg, transparent, rgba(255,255,255,0.15), transparent)"
+                    ]
+                  }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: "linear"
+                  }}
+                  style={{
+                    backgroundSize: "200% 200%"
+                  }}
+                />
+                <span className="relative z-10 flex items-center gap-3">
+                  <motion.span
+                    animate={{ rotate: [0, 360] }}
+                    transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+                  >
+                    ⚡
+                  </motion.span>
+                  Započni automatizaciju
+                  <motion.span
+                    animate={{ x: [0, 8, 0] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                  >
+                    →
+                  </motion.span>
+                </span>
               </motion.button>
             </div>
           </motion.div>

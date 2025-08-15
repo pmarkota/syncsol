@@ -50,116 +50,267 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" ref={ref} className="relative py-24 bg-gradient-to-br from-gray-50 to-white overflow-hidden">
-      {/* Background Elements */}
+    <section id="contact" ref={ref} className="relative py-24 bg-gradient-to-br from-slate-900 via-gray-900 to-black overflow-hidden">
+      {/* Enhanced Background Elements */}
       <div className="absolute inset-0">
+        {/* Primary glowing orbs */}
         <motion.div
           animate={{
-            x: [-100, 100, -100],
-            y: [0, -100, 0],
+            scale: [1, 1.6, 1],
+            rotate: [0, 360, 720],
+            x: [0, 60, 0],
+            y: [0, -50, 0],
           }}
           transition={{
-            duration: 25,
+            duration: 45,
             repeat: Infinity,
             ease: "linear"
           }}
-          className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-r from-purple-200/20 to-blue-200/20 rounded-full blur-3xl"
+          className="absolute top-1/4 right-0 w-96 h-96 bg-gradient-to-r from-purple-500/35 to-blue-500/35 rounded-full blur-3xl"
+          style={{
+            filter: "blur(70px)",
+            boxShadow: "0 0 350px rgba(139, 92, 246, 0.5), 0 0 700px rgba(59, 130, 246, 0.25)"
+          }}
         />
         <motion.div
           animate={{
-            x: [100, -100, 100],
+            scale: [1.4, 1, 1.4],
+            rotate: [720, 360, 0],
+            x: [0, -50, 0],
             y: [0, 50, 0],
           }}
           transition={{
-            duration: 20,
+            duration: 38,
             repeat: Infinity,
             ease: "linear"
           }}
-          className="absolute top-1/4 right-0 w-80 h-80 bg-gradient-to-r from-blue-200/20 to-indigo-200/20 rounded-full blur-3xl"
+          className="absolute bottom-0 left-1/4 w-80 h-80 bg-gradient-to-r from-blue-500/35 to-indigo-500/35 rounded-full blur-3xl"
+          style={{
+            filter: "blur(70px)",
+            boxShadow: "0 0 320px rgba(59, 130, 246, 0.5), 0 0 640px rgba(99, 102, 241, 0.25)"
+          }}
+        />
+        
+        {/* Floating contact-themed elements */}
+        <motion.div
+          animate={{
+            x: [0, 140, -70, 0],
+            y: [0, -90, 50, 0],
+            scale: [0.6, 1.5, 0.7, 0.6],
+            opacity: [0.1, 0.9, 0.2, 0.1],
+          }}
+          transition={{
+            duration: 30,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          className="absolute top-1/3 left-1/2 w-80 h-80 bg-gradient-to-r from-rose-500/25 to-pink-500/25 rounded-full blur-3xl"
+        />
+        <motion.div
+          animate={{
+            x: [0, -100, 80, 0],
+            y: [0, 70, -50, 0],
+            scale: [1.2, 0.6, 1.4, 1.2],
+            opacity: [0.2, 1, 0.1, 0.2],
+          }}
+          transition={{
+            duration: 35,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          className="absolute bottom-1/2 right-1/3 w-64 h-64 bg-gradient-to-r from-amber-500/25 to-orange-500/25 rounded-full blur-3xl"
         />
       </div>
+
+      {/* Dynamic connection lines */}
+      <motion.div
+        animate={{
+          opacity: [0.02, 0.12, 0.02],
+          scale: [0.98, 1.03, 0.98],
+        }}
+        transition={{
+          duration: 20,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+        className="absolute inset-0"
+        style={{
+          backgroundImage: `
+            linear-gradient(45deg, rgba(139, 92, 246, 0.08) 1px, transparent 1px),
+            linear-gradient(-45deg, rgba(59, 130, 246, 0.08) 1px, transparent 1px),
+            radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.05) 2px, transparent 2px)
+          `,
+          backgroundSize: "100px 100px, 100px 100px, 150px 150px"
+        }}
+      />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
-          initial={{ y: 30, opacity: 0 }}
           animate={isInView ? { y: 0, opacity: 1 } : {}}
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
           <motion.h2
-            initial={{ y: 20, opacity: 0 }}
+            initial={{ y: 30, opacity: 0 }}
             animate={isInView ? { y: 0, opacity: 1 } : {}}
-            transition={{ delay: 0.2, duration: 0.8 }}
-            className="text-4xl md:text-5xl font-bold text-gray-900 mb-6"
+            transition={{ duration: 0.8 }}
+            className="text-4xl md:text-6xl font-bold text-center mb-6 bg-gradient-to-r from-purple-300 to-blue-300 bg-clip-text text-transparent"
           >
-            Kontaktirajte <span className="bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">nas</span>
+            Kontaktirajte nas
           </motion.h2>
           <motion.p
             initial={{ y: 20, opacity: 0 }}
             animate={isInView ? { y: 0, opacity: 1 } : {}}
             transition={{ delay: 0.4, duration: 0.8 }}
-            className="text-xl text-gray-600 max-w-3xl mx-auto mb-8"
+            className="text-xl text-gray-200 max-w-3xl mx-auto mb-8"
           >
             Spremni smo pomoći u digitalizaciji vašeg poslovanja. 
             Kontaktirajte nas danas i započnimo zajedno vaš put prema digitalnoj transformaciji.
           </motion.p>
         </motion.div>
 
-        {/* Contact Methods */}
+        {/* Enhanced Contact Cards */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-          className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16"
+          className="flex flex-wrap justify-center gap-8 mb-16"
         >
           {contactMethods.map((method, index) => (
-            <motion.a
+            <motion.div
               key={method.title}
-              href={method.href}
               variants={cardVariants}
               whileHover={{ 
-                y: -10,
-                transition: { duration: 0.3 }
+                y: -15, 
+                scale: 1.05,
+                rotateY: 5,
               }}
-              className="group relative block"
+              whileTap={{ scale: 0.98 }}
+              className="group relative bg-gradient-to-br from-white/15 via-white/10 to-white/5 backdrop-blur-xl rounded-3xl p-6 border border-white/30 hover:border-purple-400/60 transition-all duration-500 overflow-visible w-80 max-w-sm min-h-96 flex flex-col justify-between"
+              style={{
+                boxShadow: "0 20px 40px rgba(0, 0, 0, 0.3), 0 0 60px rgba(139, 92, 246, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2)"
+              }}
             >
-              <div className="relative bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-100 overflow-hidden">
-                {/* Card Background Gradient */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${method.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} />
-                
-                {/* Icon */}
-                <motion.div
+              {/* Card glow effect */}
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-br from-purple-500/20 via-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl"
+                initial={false}
+              />
+              
+              {/* Floating particles */}
+              <motion.div
+                animate={{
+                  y: [0, -20, 0],
+                  opacity: [0.3, 0.8, 0.3],
+                }}
+                transition={{
+                  duration: 4 + index,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+                className="absolute top-4 right-4 w-2 h-2 bg-purple-400/60 rounded-full blur-sm"
+              />
+              <motion.div
+                animate={{
+                  y: [0, -15, 0],
+                  x: [0, 10, 0],
+                  opacity: [0.2, 0.7, 0.2],
+                }}
+                transition={{
+                  duration: 5 + index * 0.5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 1
+                }}
+                className="absolute bottom-6 left-6 w-1.5 h-1.5 bg-blue-400/60 rounded-full blur-sm"
+              />
+
+              {/* Card Content */}
+              <div className="relative z-10 flex flex-col h-full">
+                {/* Icon Section */}
+                <motion.div 
+                  className="flex justify-center mb-6"
                   whileHover={{ 
                     scale: 1.1,
-                    rotate: 5
+                    y: -5
                   }}
-                  className="relative z-10 mb-6"
+                  transition={{ duration: 0.3 }}
                 >
-                  <div className={`w-16 h-16 bg-gradient-to-r ${method.gradient} rounded-2xl flex items-center justify-center text-2xl shadow-lg`}>
+                  <motion.div
+                    animate={{
+                      boxShadow: [
+                        "0 0 20px rgba(139, 92, 246, 0.3)",
+                        "0 0 40px rgba(59, 130, 246, 0.5)",
+                        "0 0 20px rgba(139, 92, 246, 0.3)"
+                      ]
+                    }}
+                    transition={{
+                      duration: 4,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                    className="w-20 h-20 rounded-2xl bg-gradient-to-br from-purple-500/40 to-blue-500/40 backdrop-blur-sm border border-white/30 flex items-center justify-center text-4xl"
+                  >
                     {method.icon}
-                  </div>
+                  </motion.div>
                 </motion.div>
 
-                {/* Content */}
-                <div className="relative z-10">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-purple-700 transition-colors duration-300">
+                {/* Title and Description */}
+                <div className="text-center mb-8 flex-grow">
+                  <motion.h3 
+                    className="text-2xl font-bold text-white mb-3"
+                    whileHover={{ scale: 1.05 }}
+                  >
                     {method.title}
-                  </h3>
-                  <p className="text-gray-600 mb-4 group-hover:text-gray-700 transition-colors duration-300">
-                    {method.description}
-                  </p>
-                  <div className={`text-lg font-semibold bg-gradient-to-r ${method.gradient} bg-clip-text text-transparent`}>
-                    {method.value}
-                  </div>
+                  </motion.h3>
+                  <p className="text-gray-300 leading-relaxed">{method.description}</p>
                 </div>
 
-                {/* Hover Effect Border */}
-                <div className={`absolute inset-0 rounded-3xl bg-gradient-to-r ${method.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}>
-                  <div className="absolute inset-[2px] bg-white rounded-3xl" />
-                </div>
+                {/* Contact Info */}
+                <motion.div 
+                  className="mt-auto"
+                  whileHover={{ y: -2 }}
+                >
+                  <motion.div 
+                    className="text-sm font-semibold text-center p-3 rounded-xl bg-gradient-to-r from-white/15 to-white/10 backdrop-blur-sm border border-white/30 text-white break-all"
+                    whileHover={{ 
+                      scale: 1.02,
+                      backgroundColor: "rgba(255, 255, 255, 0.2)"
+                    }}
+                    style={{
+                      boxShadow: "0 8px 25px rgba(139, 92, 246, 0.2)",
+                      wordWrap: "break-word",
+                      overflowWrap: "break-word"
+                    }}
+                  >
+                    <span className="bg-gradient-to-r from-purple-200 to-blue-200 bg-clip-text text-transparent font-bold text-sm leading-tight">
+                      {method.value}
+                    </span>
+                  </motion.div>
+                </motion.div>
               </div>
-            </motion.a>
+
+              {/* Shimmer effect */}
+              <motion.div
+                className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                animate={{
+                  background: [
+                    "linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent)",
+                    "linear-gradient(225deg, transparent, rgba(255,255,255,0.1), transparent)",
+                    "linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent)"
+                  ]
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "linear"
+                }}
+                style={{
+                  backgroundSize: "200% 200%"
+                }}
+              />
+            </motion.div>
           ))}
         </motion.div>
 
