@@ -46,7 +46,7 @@ export default function HeroSection() {
 
       <motion.div 
         style={{ y: isDesktop ? y : 0 }}
-        className="relative z-10 text-center px-4 max-w-6xl mx-auto py-8 md:py-16"
+        className="relative z-10 text-center px-4 max-w-6xl mx-auto py-8 md:py-8 md:mt-[-10vh]"
       >
         {/* Enhanced Logo Animation */}
         <motion.div
@@ -56,7 +56,7 @@ export default function HeroSection() {
             duration: 0.8, 
             ease: "easeOut"
           }}
-          className="mb-8 md:mb-16"
+          className="mb-6 md:mb-12"
         >
           <div className="relative inline-block">
             <Image
@@ -101,7 +101,7 @@ export default function HeroSection() {
           initial={{ y: 40, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 1.2, duration: 0.8 }}
-          className="text-lg sm:text-xl md:text-2xl text-gray-300 mb-8 md:mb-12 max-w-4xl mx-auto leading-relaxed px-2"
+          className="text-lg sm:text-xl md:text-2xl text-gray-300 mb-6 md:mb-8 max-w-4xl mx-auto leading-relaxed px-2"
         >
           Specijalizirani smo za <span className="text-purple-300 font-semibold">automatizaciju poslovnih procesa</span> i 
           razvoj naprednih softverskih rješenja koja transformiraju način rada vaše organizacije
@@ -112,7 +112,7 @@ export default function HeroSection() {
           initial={{ y: 80, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 1.4, duration: 1, ease: "easeOut" }}
-          className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12 md:mb-16 px-4"
+          className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8 md:mb-10 px-4"
         >
           <motion.button
             onClick={() => {
