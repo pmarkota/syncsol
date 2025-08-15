@@ -12,7 +12,7 @@ export default function AutomationSection() {
       title: "Automatizirana obrada narudžbi",
       description: "Automatska obrada narudžbi iz e-maila (PDF format) s izravnim kreiranjem naloga u ERP sustavu za potpunu digitalizaciju procesa naručivanja.",
       icon: "📧",
-      features: ["PDF parsing", "ERP integracija", "Automatsko kreiranje naloga", "Email notifikacije"],
+      features: [],
       gradient: "from-emerald-500 to-teal-600",
       delay: 0.1
     },
@@ -20,7 +20,7 @@ export default function AutomationSection() {
       title: "Analiza prodaje i optimizacija zaliha",
       description: "Napredni sustav analize prodaje po prodajnim mjestima s automatskim prijedlogom optimalnih zaliha na temelju povijesnih podataka i trendova.",
       icon: "📊",
-      features: ["Prediktivna analitika", "Optimizacija zaliha", "Reporting", "Trend analiza"],
+      features: [],
       gradient: "from-blue-500 to-indigo-600",
       delay: 0.2
     },
@@ -28,7 +28,7 @@ export default function AutomationSection() {
       title: "HR aplikacija za upravljanje",
       description: "Sveobuhvatna HR aplikacija za vođenje evidencije zaposlenika i olakšano administriranje svih kadrovskih procesa u jednom mjestu.",
       icon: "👥",
-      features: ["Evidencija zaposlenika", "Administracija", "Workflow automatizacija", "Dokumentacija"],
+      features: [],
       gradient: "from-purple-500 to-pink-600",
       delay: 0.3
     },
@@ -36,7 +36,7 @@ export default function AutomationSection() {
       title: "Praćenje ugovora i podsjetnici",
       description: "Automatsko praćenje ugovora s inteligentnim podsjetnicima na rokove isteka, produženja i važne datume za proaktivno upravljanje.",
       icon: "📋",
-      features: ["Praćenje rokova", "Automatski podsjetnici", "Upravljanje ugovorima", "Kalendarska integracija"],
+      features: [],
       gradient: "from-orange-500 to-red-600",
       delay: 0.4
     },
@@ -44,7 +44,7 @@ export default function AutomationSection() {
       title: "CRM integracija web upita",
       description: "Automatizirana obrada upita s web stranice s direktnom integracijom u CRM sustav za besprijekorno praćenje potencijalnih klijenata.",
       icon: "🌐",
-      features: ["Web form integracija", "CRM automatizacija", "Lead scoring", "Follow-up automatizacija"],
+      features: [],
       gradient: "from-cyan-500 to-blue-600",
       delay: 0.5
     },
@@ -52,7 +52,7 @@ export default function AutomationSection() {
       title: "Webshop skladišna integracija",
       description: "Potpuna integracija webshopa sa skladišnim sustavom za ažurno stanje zaliha i automatsko kreiranje naloga za dostavu u realnom vremenu.",
       icon: "🛒",
-      features: ["Real-time sync", "Inventory management", "Automatska dostava", "Order tracking"],
+      features: [],
       gradient: "from-green-500 to-emerald-600",
       delay: 0.6
     },
@@ -60,7 +60,7 @@ export default function AutomationSection() {
       title: "Automatizirano fakturiranje",
       description: "Potpuno automatizirano fakturiranje i slanje računa s prilagodljivim predlošcima i automatskim praćenjem plaćanja.",
       icon: "💰",
-      features: ["Automatsko fakturiranje", "Email slanje", "Payment tracking", "Prilagodljivi predlošci"],
+      features: [],
       gradient: "from-amber-500 to-orange-600",
       delay: 0.7
     },
@@ -68,7 +68,7 @@ export default function AutomationSection() {
       title: "Interaktivni dashboardi",
       description: "Izrada naprednih interaktivnih dashboarda za analizu poslovnih podataka u realnom vremenu s prilagodljivim KPI metrikama.",
       icon: "📈",
-      features: ["Real-time analytics", "Prilagodljivi KPI", "Interaktivni grafovi", "Export funkcionalnost"],
+      features: [],
       gradient: "from-violet-500 to-purple-600",
       delay: 0.8
     }
@@ -99,97 +99,11 @@ export default function AutomationSection() {
 
   return (
     <section id="automation" ref={ref} className="relative py-24 bg-gradient-to-br from-slate-900 via-indigo-900 to-purple-900 overflow-hidden">
-      {/* Enhanced Background Elements */}
-      <div className="absolute inset-0">
-        {/* Primary animated orbs with enhanced glow */}
-        <motion.div
-          animate={{
-            scale: [1, 1.4, 1],
-            rotate: [0, 180, 360],
-            x: [0, 40, 0],
-            y: [0, -25, 0],
-          }}
-          transition={{
-            duration: 28,
-            repeat: Infinity,
-            ease: "linear"
-          }}
-          className="absolute top-1/4 left-0 w-96 h-96 bg-gradient-to-r from-purple-500/25 to-blue-500/25 rounded-full blur-3xl"
-          style={{
-            filter: "blur(50px)",
-            boxShadow: "0 0 250px rgba(139, 92, 246, 0.4), 0 0 500px rgba(59, 130, 246, 0.2)"
-          }}
-        />
-        <motion.div
-          animate={{
-            scale: [1.2, 1, 1.2],
-            rotate: [360, 180, 0],
-            x: [0, -35, 0],
-            y: [0, 35, 0],
-          }}
-          transition={{
-            duration: 32,
-            repeat: Infinity,
-            ease: "linear"
-          }}
-          className="absolute bottom-0 right-1/4 w-80 h-80 bg-gradient-to-r from-blue-500/25 to-indigo-500/25 rounded-full blur-3xl"
-          style={{
-            filter: "blur(50px)",
-            boxShadow: "0 0 220px rgba(59, 130, 246, 0.4), 0 0 440px rgba(99, 102, 241, 0.2)"
-          }}
-        />
-        
-        {/* Additional floating elements for depth */}
-        <motion.div
-          animate={{
-            x: [0, 100, -50, 0],
-            y: [0, -60, 30, 0],
-            scale: [0.8, 1.3, 0.9, 0.8],
-            opacity: [0.3, 0.7, 0.4, 0.3],
-          }}
-          transition={{
-            duration: 22,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-          className="absolute top-1/2 right-1/3 w-64 h-64 bg-gradient-to-r from-cyan-500/20 to-teal-500/20 rounded-full blur-3xl"
-        />
-        <motion.div
-          animate={{
-            x: [0, -80, 40, 0],
-            y: [0, 50, -30, 0],
-            scale: [1, 0.8, 1.2, 1],
-            opacity: [0.4, 0.8, 0.3, 0.4],
-          }}
-          transition={{
-            duration: 26,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-          className="absolute bottom-1/3 left-1/4 w-48 h-48 bg-gradient-to-r from-violet-500/20 to-fuchsia-500/20 rounded-full blur-3xl"
-        />
+      {/* Simplified Background */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/4 left-0 w-96 h-96 bg-gradient-to-r from-purple-500/10 to-blue-500/10 rounded-full blur-3xl opacity-30" />
+        <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-gradient-to-r from-blue-500/10 to-indigo-500/10 rounded-full blur-3xl opacity-30" />
       </div>
-
-      {/* Dynamic grid pattern */}
-      <motion.div
-        animate={{
-          opacity: [0.05, 0.2, 0.05],
-          scale: [1, 1.02, 1],
-        }}
-        transition={{
-          duration: 12,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-        className="absolute inset-0"
-        style={{
-          backgroundImage: `
-            radial-gradient(circle at 25% 25%, rgba(139, 92, 246, 0.1) 1px, transparent 1px),
-            radial-gradient(circle at 75% 75%, rgba(59, 130, 246, 0.1) 1px, transparent 1px)
-          `,
-          backgroundSize: "60px 60px"
-        }}
-      />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Enhanced Section Header */}

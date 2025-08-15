@@ -2,10 +2,12 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Image from 'next/image';
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 
 export default function HeroSection() {
   const ref = useRef(null);
+  const [isDesktop, setIsDesktop] = useState(false);
+  
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end center"]
@@ -14,31 +16,34 @@ export default function HeroSection() {
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "15%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.9], [1, 0]);
 
+  useEffect(() => {
+    const checkIsDesktop = () => {
+      setIsDesktop(window.innerWidth >= 768);
+    };
+    
+    checkIsDesktop();
+    window.addEventListener('resize', checkIsDesktop);
+    
+    return () => window.removeEventListener('resize', checkIsDesktop);
+  }, []);
+
   return (
     <section ref={ref} id="home" className="relative h-screen flex items-center justify-center overflow-hidden">
       {/* Multi-layered Gradient Background */}
       <motion.div 
-        style={{ y, opacity }}
+        style={{ y: isDesktop ? y : 0, opacity: isDesktop ? opacity : 1 }}
         className="absolute inset-0 bg-gradient-to-br from-slate-900 via-purple-900 to-blue-900"
       />
       
-      {/* Animated mesh gradient overlay */}
-      <motion.div
-        animate={{
-          background: [
-            "radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.3) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%), radial-gradient(circle at 40% 80%, rgba(120, 219, 255, 0.3) 0%, transparent 50%)",
-            "radial-gradient(circle at 60% 20%, rgba(120, 119, 198, 0.3) 0%, transparent 50%), radial-gradient(circle at 20% 80%, rgba(255, 119, 198, 0.3) 0%, transparent 50%), radial-gradient(circle at 80% 50%, rgba(120, 219, 255, 0.3) 0%, transparent 50%)",
-            "radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.3) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%), radial-gradient(circle at 40% 80%, rgba(120, 219, 255, 0.3) 0%, transparent 50%)"
-          ]
-        }}
-        transition={{
-          duration: 10,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-        className="absolute inset-0"
-      />
+      {/* Static gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 via-transparent to-blue-500/10" />
       
+      {/* Simplified background orbs */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-purple-500/10 to-blue-500/10 rounded-full blur-3xl opacity-50" />
+        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-blue-500/10 to-indigo-500/10 rounded-full blur-3xl opacity-50" />
+      </div>
+
       {/* Enhanced floating orbs with glow effects */}
       <div className="absolute inset-0">
         {/* Primary glowing orbs */}
@@ -179,67 +184,29 @@ export default function HeroSection() {
       </div>
 
       <motion.div 
-        style={{ y: y }}
-        className="relative z-10 text-center px-4 max-w-6xl mx-auto"
+        style={{ y: isDesktop ? y : 0 }}
+        className="relative z-10 text-center px-4 max-w-6xl mx-auto pt-16 md:pt-0"
       >
         {/* Enhanced Logo Animation */}
         <motion.div
-          initial={{ scale: 0, opacity: 0, rotateY: 180 }}
-          animate={{ scale: 1, opacity: 1, rotateY: 0 }}
+          initial={{ scale: 0, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
           transition={{ 
-            duration: 1.5, 
-            ease: "easeOut",
-            type: "spring",
-            stiffness: 80
+            duration: 0.8, 
+            ease: "easeOut"
           }}
-          className="mb-16"
+          className="mb-8 md:mb-16"
         >
-          <motion.div
-            animate={{ 
-              y: [0, -15, 0],
-            }}
-            transition={{
-              duration: 6,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-            className="relative inline-block"
-          >
-            {/* Enhanced glow effects */}
-            <motion.div 
-              animate={{
-                scale: [1, 1.1, 1],
-                opacity: [0.3, 0.6, 0.3],
-              }}
-              transition={{
-                duration: 4,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-              className="absolute inset-0 bg-gradient-to-r from-purple-500/30 to-blue-500/30 rounded-full blur-3xl scale-125" 
-            />
-            <motion.div 
-              animate={{
-                scale: [1.1, 1, 1.1],
-                opacity: [0.2, 0.4, 0.2],
-              }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: 1
-              }}
-              className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full blur-2xl scale-150" 
-            />
+          <div className="relative inline-block">
             <Image
               src="/Martin - bijeli logo1.png"
               alt="Sync Solution Logo"
-              width={450}
-              height={350}
-              className="relative z-10 drop-shadow-2xl"
+              width={300}
+              height={230}
+              className="relative z-10 drop-shadow-2xl w-auto h-auto max-w-[250px] md:max-w-[350px] lg:max-w-[450px]"
               priority
             />
-          </motion.div>
+          </div>
         </motion.div>
 
         {/* Enhanced Main Heading */}
@@ -278,95 +245,42 @@ export default function HeroSection() {
           razvoj naprednih softverskih rješenja koja transformiraju način rada vaše organizacije
         </motion.p>
 
-        {/* Enhanced CTA Buttons with Glow Effects */}
+        {/* Enhanced CTA Buttons */}
         <motion.div
-          initial={{ y: 40, opacity: 0 }}
+          initial={{ y: 80, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 1.4, duration: 0.8 }}
-          className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-32"
+          transition={{ delay: 1.4, duration: 1, ease: "easeOut" }}
+          className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16 md:mb-16 px-4"
         >
           <motion.button
             onClick={() => {
               document.querySelector('#automation')?.scrollIntoView({ behavior: 'smooth' });
             }}
-            whileHover={{ 
-              scale: 1.08,
-              y: -8
-            }}
+            whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="group relative bg-gradient-to-r from-purple-600 via-violet-600 to-blue-600 text-white px-10 py-5 rounded-2xl font-bold text-lg shadow-2xl transition-all duration-500 overflow-hidden"
-            style={{
-              boxShadow: "0 20px 40px rgba(139, 92, 246, 0.4), 0 0 60px rgba(139, 92, 246, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2)"
-            }}
+            className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-8 py-4 rounded-xl font-bold text-lg shadow-xl w-full sm:w-auto"
           >
-            <motion.div
-              className="absolute inset-0 bg-gradient-to-r from-purple-500 via-violet-500 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-              initial={false}
-            />
-            <motion.div
-              className="absolute inset-0 rounded-2xl"
-              animate={{
-                background: [
-                  "linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent)",
-                  "linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent)"
-                ]
-              }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                ease: "linear"
-              }}
-              style={{
-                backgroundSize: "200% 200%"
-              }}
-            />
-            <span className="relative z-10 flex items-center gap-2">
-              Saznaj više
-              <motion.span
-                animate={{ x: [0, 5, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity }}
-              >
-                →
-              </motion.span>
-            </span>
+            Saznaj više →
           </motion.button>
-          
+
           <motion.button
             onClick={() => {
-              document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
+              window.open('mailto:martin.pucic@syncsolution.hr?subject=Upit za novi projekt', '_blank');
             }}
-            whileHover={{ 
-              scale: 1.08,
-              y: -8
-            }}
+            whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="group relative bg-white/5 backdrop-blur-xl text-white px-10 py-5 rounded-2xl font-bold text-lg border-2 border-white/20 transition-all duration-500 overflow-hidden"
-            style={{
-              boxShadow: "0 20px 40px rgba(255, 255, 255, 0.1), 0 0 60px rgba(255, 255, 255, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.2)"
-            }}
+            className="bg-white/10 backdrop-blur-sm text-white px-8 py-4 rounded-xl font-bold text-lg border border-white/30 w-full sm:w-auto"
           >
-            <motion.div
-              className="absolute inset-0 bg-gradient-to-r from-white/10 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-              initial={false}
-            />
-            <span className="relative z-10 flex items-center gap-2">
-              Kontakt
-              <motion.span
-                animate={{ rotate: [0, 15, 0] }}
-                transition={{ duration: 2, repeat: Infinity }}
-              >
-                ✉
-              </motion.span>
-            </span>
+            Kontakt 📧
           </motion.button>
         </motion.div>
 
-        {/* Scroll Indicator */}
+        {/* Scroll Indicator - Hidden on mobile */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 2, duration: 1 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2"
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:block"
         >
           <motion.button
             onClick={() => {
