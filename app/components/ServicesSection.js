@@ -160,9 +160,12 @@ export default function ServicesSection() {
           className="text-center mt-16"
         >
           <motion.button
+            onClick={() => {
+              window.open('mailto:info@syncsolution.hr?subject=Upit za novi projekt', '_blank');
+            }}
             whileHover={{ 
               scale: 1.05,
-              boxShadow: "0 20px 40px rgba(139, 92, 246, 0.3)"
+              boxShadow: "0 25px 50px rgba(139, 92, 246, 0.4)"
             }}
             whileTap={{ scale: 0.95 }}
             className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-8 py-4 rounded-full text-lg font-semibold shadow-xl hover:shadow-purple-500/50 transition-all duration-300"

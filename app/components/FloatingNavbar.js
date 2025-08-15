@@ -69,13 +69,15 @@ export default function FloatingNavbar() {
               </motion.button>
             ))}
             <motion.button
+              onClick={() => {
+                window.open('mailto:info@syncsolution.hr?subject=Upit za novi projekt', '_blank');
+              }}
               whileHover={{ 
-                scale: 1.05, 
-                boxShadow: '0 20px 40px rgba(139, 92, 246, 0.4)',
-                y: -2
+                scale: 1.05,
+                boxShadow: "0 20px 40px rgba(139, 92, 246, 0.4)"
               }}
               whileTap={{ scale: 0.95 }}
-              className="bg-gradient-to-r from-purple-600 via-purple-700 to-blue-600 text-white px-6 py-3 rounded-full font-medium shadow-xl hover:shadow-purple-500/40 transition-all duration-300 relative overflow-hidden group"
+              className="group relative bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 py-3 rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden"
             >
               <motion.div
                 className="absolute inset-0 bg-gradient-to-r from-purple-500 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
