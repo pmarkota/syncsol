@@ -1,9 +1,27 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
 
 export default function ParticleBackground() {
-  const particles = Array.from({ length: 80 }, (_, i) => ({
+  const [isMobile, setIsMobile] = useState(false);
+  
+  useEffect(() => {
+    const checkIsMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkIsMobile();
+    window.addEventListener('resize', checkIsMobile);
+    
+    return () => window.removeEventListener('resize', checkIsMobile);
+  }, []);
+  
+  // Reduce particle count on mobile
+  const particleCount = isMobile ? 20 : 80;
+  const shapeCount = isMobile ? 4 : 12;
+  
+  const particles = Array.from({ length: particleCount }, (_, i) => ({
     id: i,
     size: Math.random() * 6 + 2,
     x: Math.random() * 100,
@@ -13,7 +31,7 @@ export default function ParticleBackground() {
     opacity: Math.random() * 0.4 + 0.1,
   }));
 
-  const floatingShapes = Array.from({ length: 12 }, (_, i) => ({
+  const floatingShapes = Array.from({ length: shapeCount }, (_, i) => ({
     id: i,
     size: Math.random() * 30 + 20,
     x: Math.random() * 100,
@@ -23,6 +41,17 @@ export default function ParticleBackground() {
     shape: ['circle', 'square', 'triangle'][Math.floor(Math.random() * 3)],
   }));
 
+  // Don't render heavy animations on mobile to prevent flashing
+  if (isMobile) {
+    return (
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        {/* Simplified static background for mobile */}
+        <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-gradient-to-r from-purple-500/10 to-blue-500/10 rounded-full blur-xl opacity-50" />
+        <div className="absolute bottom-1/4 right-1/4 w-32 h-32 bg-gradient-to-r from-blue-500/10 to-indigo-500/10 rounded-full blur-xl opacity-50" />
+      </div>
+    );
+  }
+  
   return (
     <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
       {/* Enhanced Particles */}

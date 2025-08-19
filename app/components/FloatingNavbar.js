@@ -6,13 +6,22 @@ import { useState, useEffect } from 'react';
 export default function FloatingNavbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const { scrollY } = useScroll();
   const opacity = useTransform(scrollY, [0, 100], [0, 1]);
 
   useEffect(() => {
     const updateScrolled = () => setIsScrolled(window.scrollY > 50);
+    const checkIsMobile = () => setIsMobile(window.innerWidth < 768);
+    
+    checkIsMobile();
     window.addEventListener('scroll', updateScrolled);
-    return () => window.removeEventListener('scroll', updateScrolled);
+    window.addEventListener('resize', checkIsMobile);
+    
+    return () => {
+      window.removeEventListener('scroll', updateScrolled);
+      window.removeEventListener('resize', checkIsMobile);
+    };
   }, []);
 
   const navItems = [
@@ -32,7 +41,7 @@ export default function FloatingNavbar() {
     <>
       {/* Desktop Navbar */}
       <motion.nav
-        style={{ opacity }}
+        style={{ opacity: isMobile ? 1 : opacity }}
         className="fixed top-6 left-1/2 transform -translate-x-1/2 z-50 hidden lg:block"
       >
         <motion.div
@@ -127,7 +136,7 @@ export default function FloatingNavbar() {
 
       {/* Mobile Navbar */}
       <motion.nav
-        style={{ opacity }}
+        style={{ opacity: 1 }}
         className="fixed top-4 left-4 right-4 z-50 lg:hidden"
       >
         <motion.div
